@@ -1,0 +1,21 @@
+meta {
+  name: (2-4) Get Current Tree
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{domain}}/trees/current
+  body: none
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+docs {
+  GET /trees/current will return the tree ID of the currently selected tree in the response body.
+  
+  If the status code from this request is 200 OK, proceed to (2-5) Add Person
+}

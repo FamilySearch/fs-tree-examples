@@ -1,0 +1,54 @@
+meta {
+  name: (4-1) Couple Relationship
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{domain}}/tree/relationships
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/x-gedcomx-v1+json
+  Content-Type: application/x-fs-v1+json
+}
+
+body:json {
+  {
+    "relationships" : [ {
+      "type" : "http://gedcomx.org/Couple",
+      "person1" : {
+        "resource" : "http://beta.familysearch.org/platform/tree/persons/{{person1Id}}",
+        "resourceId" : "{{person1Id}}"
+      },
+      "person2" : {
+         "resource" : "http://beta.familysearch.org/platform/tree/persons/{{person2Id}}",
+         "resourceId" : "{{person2Id}}"
+      },
+      "facts" : [ {
+        "attribution" : {
+          "contributor" : {
+            "resource" : "https://api.familysearch.org/platform/users/agents/JNYR-KJP"
+          },
+          "changeMessage" : "...change message..."
+        },
+        "type" : "http://gedcomx.org/Marriage",
+        "date" : {
+          "original" : "June 1800",
+          "formal" : "+1800-06"
+        },
+        "place" : {
+          "original" : "Provo, Utah, Utah, United States"
+        }
+      } ]
+    } ]
+  }
+}
+
+docs {
+  The /tree/relationships endpoint creates a relationship based on the information provided in the Request Body. The request body provided in this request creates a Couple relationship between the persons specified in person1Id and person2Id in the global variables.
+  
+  If the status code from this request is 201 Created, proceed to (14) Create Parent Child Relationship.
+}

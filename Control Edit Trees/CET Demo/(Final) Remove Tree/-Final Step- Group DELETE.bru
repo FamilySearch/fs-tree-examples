@@ -1,0 +1,21 @@
+meta {
+  name: -Final Step- Group DELETE
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{domain}}/groups/{{groupId}}
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/x-fs-v1+json
+}
+
+docs {
+  This request deletes the group identified by groupId.
+  
+  If this request succeeds the status of the response will be 204 No Content.
+}

@@ -1,0 +1,11 @@
+meta {
+  name: Delete Person1Id
+  type: http
+  seq: 1
+}
+
+delete {
+  url: {{domain}}/tree/persons/{{person1Id}}
+  body: none
+  auth: inherit
+}

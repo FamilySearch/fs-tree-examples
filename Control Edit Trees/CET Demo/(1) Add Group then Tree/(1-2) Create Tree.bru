@@ -1,0 +1,58 @@
+meta {
+  name: (1-2) Create Tree
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{domain}}/trees
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept-Language: en
+  Content-Type: application/x-fs-v1+json
+  ~Accept: application/x-fs-v1+json
+}
+
+body:json {
+  {
+      "trees": [
+        {
+          "groupIds": [
+            "{{groupId}}"
+          ],
+          "name":"CET Tree for TreeTest - {{isoTimestamp}}",
+          "description":"CET Tree for TreeTest - {{isoTimestamp}} Description",
+          "hidden" : true,
+          "ownerAccess" : "CompanyApps",
+          "groupAccess" : "None",
+          "private" : true      }
+      ]
+    }
+   
+}
+
+script:post-response {
+  let treeId = res.headers["x-entity-id"];
+  
+  // Check if the header exists before setting the variable
+  if (treeId) {
+      bru.setEnvVar("treeId", treeId);
+  }
+  
+}
+
+tests {
+  // postman.setGlobalVariable("treeId", res.getHeader('X-Entity-Id'));
+  // pm.globals.unset("pass");
+}
+
+docs {
+  The /trees endpoint creates a CET tree based on the information provided in the Request Body, including the groupId value stored in the groupId global variable.
+  
+  This request in the collection obtains the tree ID from the response header x-entity-id and saves it in the global variable treeId.
+  
+  If the status code from this request is 201 Created, proceed to (1-3) Read Group.  
+}

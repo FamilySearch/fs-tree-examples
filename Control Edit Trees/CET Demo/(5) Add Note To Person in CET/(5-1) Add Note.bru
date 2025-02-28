@@ -1,0 +1,43 @@
+meta {
+  name: (5-1) Add Note
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{domain}}/tree/persons/{{person1Id}}/notes
+  body: json
+  auth: inherit
+}
+
+params:query {
+  ~: null
+}
+
+headers {
+  Content-Type: application/x-fs-v1+json
+  Accept: application/x-fs-v1+json
+  X-Reason: This is the reason header
+}
+
+body:json {
+  {
+    "persons" : [ {
+      "id" : "{{person1Id}}",
+      "attribution" : {
+        "changeMessage" : "...change message..."
+      },
+      "notes" : [ {
+          "lang" : "en",
+          "subject" : "My Test Note",
+          "text" : "Some important information about the person noted here"
+      } ]
+    } ]
+  }
+}
+
+docs {
+  The /tree/persons/{personId}/notes endpoint adds a note record to the person specified in {personId} based on the information provided in the Request Body. The request body provided in this request adds a note to the person specified in person1Id.
+  
+  If the status code from this request is 201 Created, proceed to (6-1) Add Source Definition.
+}

@@ -1,0 +1,26 @@
+meta {
+  name: (9-1) GET Tree Person Ids
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{domain}}/trees/{{treeId}}/persons?count=100&view="identifiers"
+  body: none
+  auth: inherit
+}
+
+params:query {
+  count: 100
+  view: "identifiers"
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  GET /trees/{treeId}/persons endpoint returns a feed of the person Ids in the tree specified by treeId. The count query parameter specifies the number of entries in each page. The view query parameter specifies the feed should contain pids.
+  
+  If the status code from this request is 200 Created, proceed to (Final) Remove Tree and execute the requests to clean up the users in this tree and remove the group.
+}

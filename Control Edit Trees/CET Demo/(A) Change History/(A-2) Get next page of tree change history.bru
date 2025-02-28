@@ -1,0 +1,20 @@
+meta {
+  name: (A-2) Get next page of tree change history
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{domain}}/trees/{{treeId}}/changes?flag=fsh&from=6a2617d0-80fc-11ef-8850-b53c83ba2bed
+  body: none
+  auth: inherit
+}
+
+params:query {
+  flag: fsh
+  from: 6a2617d0-80fc-11ef-8850-b53c83ba2bed
+}
+
+docs {
+  If the status code from this request is 200 OK, proceed to (17) Get tree change history.
+}

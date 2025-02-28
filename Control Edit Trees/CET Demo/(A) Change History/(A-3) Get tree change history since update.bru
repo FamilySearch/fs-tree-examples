@@ -1,0 +1,19 @@
+meta {
+  name: (A-3) Get tree change history since update
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{domain}}/trees/{{treeId}}/changes?timestamp=1727900706993
+  body: none
+  auth: inherit
+}
+
+params:query {
+  timestamp: 1727900706993
+}
+
+docs {
+  When you are finished using this tree you can delete it by proceeding to (Final Step) Group DELETE.
+}

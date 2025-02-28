@@ -1,0 +1,72 @@
+meta {
+  name: (1-1) Create Group
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{domain}}/groups
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept-Language: en
+  Content-Type: application/x-fs-v1+json
+  ~Accept: application/x-fs-v1+json
+}
+
+body:json {
+  {
+    "groups" : [ {
+      "name" : "Control Edit Trees Demo {{isoTimestamp}}",
+      "description" : "Control Edit Trees Demo Description",
+      "codeOfConduct" : "Control Edit Trees Demo Code of Conduct",
+      "treeIds":null
+    } ]
+  }
+}
+
+vars:post-response {
+  : 
+}
+
+script:pre-request {
+  // Get the current date and time in ISO format
+  let isoTimestamp = new Date().toISOString();
+  
+  // Use the generated timestamp in your logic
+  bru.setVar("isoTimestamp", isoTimestamp);
+}
+
+script:post-response {
+  // Get the 'X-Entity-Id' header from the response
+  let groupId = res.headers["x-entity-id"];
+  
+  // Check if the header exists before setting the variable
+  if (groupId) {
+      bru.setEnvVar("groupId", groupId);
+  }
+  
+  
+  
+}
+
+tests {
+  // postman.setGlobalVariable("groupId", res.getHeader('X-Entity-Id'));
+  // pm.globals.unset("pass");
+}
+
+docs {
+  The /groups endpoint creates a CET group based on the information provided in the Request Body. In order to create unique naming for the group the timestamp is appended to the group name.
+  
+  This request in the collection obtains the group ID from the response header x-entity-id and saves it in the global variable groupId.
+  
+  If you want to change any of the properties being used in the requests, click the body tab and edit the fields.
+  
+  Click **Send** to execute the request.
+  
+  Bruno will display the results of the request in the **Response** area.
+  
+  If the status code from this request is 201 Created, proceed to (1-2) Create Tree.
+}

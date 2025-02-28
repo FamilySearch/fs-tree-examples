@@ -1,0 +1,21 @@
+meta {
+  name: (1-4) Read Tree
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{domain}}/trees/{{treeId}}
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/x-fs-v1+json
+}
+
+docs {
+  The /trees/{treeId} endpoint gets the details for the CET tree specified by treeId.
+  
+  If the status code from this request is 200 OK, the details of the tree will be in the response body. Proceed to (2-1) Add Person.
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Control Edit Trees",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

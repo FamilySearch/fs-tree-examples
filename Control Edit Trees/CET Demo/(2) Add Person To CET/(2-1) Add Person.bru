@@ -1,0 +1,185 @@
+meta {
+  name: (2-1) Add Person
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{domain}}/tree/persons
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/x-gedcomx-v1+json
+}
+
+body:json {
+  {
+    "persons" : [ {
+          "personInfo" : [ {
+        "treeId" : "{{treeId}}"
+      } ],
+      "living" : false,
+      "gender" : {
+        
+        "type" : "http://gedcomx.org/Male"
+      },
+      "names" : [ {
+        "type" : "http://gedcomx.org/BirthName",
+        "preferred" : true,
+        "nameForms" : [ {
+          "lang" : "en",
+          "fullText" : "William Heaton",
+          "parts" : [ {
+            "type" : "http://gedcomx.org/Given",
+            "value" : "William"
+          }, {
+            "type" : "http://gedcomx.org/Surname",
+            "value" : "Heaton"
+          } ]
+        } ]
+      } ],
+      "facts" : [ {
+        "type" : "http://gedcomx.org/Birth",
+        "date" : {
+          "original" : "10 March 1827",
+          "formal" : "+1827-03-10",
+          "normalized" : [ {
+            "value" : "10 March 1827"
+          } ]
+        },
+        "place" : {
+          "original" : "Little Horton, Bradford, Yorkshire, England, United Kingdom",
+          "description" : "#-556040033",
+          "normalized" : [ {
+            "value" : "Bradford, Yorkshire, England"
+          } ]
+        }
+      }, {
+        "type" : "http://gedcomx.org/Burial",
+        "date" : {
+          "original" : "24 September 1877",
+          "formal" : "+1877-09-24",
+          "normalized" : [ {
+            "value" : "24 September 1877"
+          } ]
+        },
+        "place" : {
+          "original" : "Orderville, Kane, Utah, United States",
+          "description" : "#1576467180",
+          "normalized" : [ {
+            "value" : "Orderville, Kane, Utah, United States"
+          } ]
+        }
+      }, {
+        "type" : "http://gedcomx.org/Christening",
+        "date" : {
+          "original" : "March 1827",
+          "formal" : "+1827-03",
+          "normalized" : [ {
+            "value" : "March 1827"
+          } ]
+        },
+        "place" : {
+          "original" : "Little Horton, Yorkshire, England, United Kingdom",
+          "description" : "#-1414501083",
+          "normalized" : [ {
+            "value" : "Little Horton, Yorkshire, England, United Kingdom"
+          } ]
+        }
+      }, {
+        "type" : "http://gedcomx.org/Death",
+        "date" : {
+          "original" : "22 September 1877",
+          "formal" : "+1877-09-22",
+          "normalized" : [ {
+            "value" : "22 September 1877"
+          } ]
+        },
+        "place" : {
+          "original" : "Orderville, Kane, Utah, United States",
+          "description" : "#1576467180",
+          "normalized" : [ {
+            "value" : "Orderville, Kane, Utah, United States"
+          } ]
+        }
+      }, {
+        "type" : "data:,Misn",
+        "date" : {
+          "original" : "from August 1850 to December 1855",
+          "formal" : "+1850-08/+1855-12",
+          "normalized" : [ {
+            "value" : "from August 1850 to December 1855"
+          } ]
+        },
+        "place" : {
+          "original" : "Scotland, United Kingdom - England, United Kingdom",
+          "description" : "#-845414320",
+          "normalized" : [ {
+            "value" : "Scotland, Devonshire, England, United Kingdom"
+          } ]
+        }
+      }, {
+        "type" : "data:,Misn",
+        "date" : {
+          "original" : "December 1852",
+          "formal" : "+1852-12",
+          "normalized" : [ {
+            "value" : "December 1852"
+          } ]
+        },
+        "place" : {
+          "original" : "Presidency Edinburgh Conference"
+        }
+      }, {
+        "type" : "data:,Misn",
+        "date" : {
+          "original" : "1865",
+          "formal" : "+1865",
+          "normalized" : [ {
+            "value" : "1865"
+          } ]
+        },
+        "place" : {
+          "original" : "Muddy Mission Nevada, United States"
+        }
+      }, {
+        "type" : "data:,Misn",
+        "date" : {
+          "original" : "spring 1874",
+          "formal" : "+1874",
+          "normalized" : [ {
+            "value" : "1874"
+          } ]
+        },
+        "place" : {
+          "original" : "United Order - Orderville"
+        }
+      } ]
+    } ]
+  }
+}
+
+script:post-response {
+  // Get the 'X-Entity-Id' header from the response
+  let person1Id = res.headers["x-entity-id"];
+  
+  // If the header exists, store it as an environment variable
+  if (person1Id) {
+      bru.setEnvVar("person1Id", person1Id);
+  }
+  
+}
+
+tests {
+  // postman.setGlobalVariable("person1Id", res.getHeader("X-Entity-Id"));
+}
+
+docs {
+  The /tree/persons endpoint creates a new person record based on the information provided in the Request Body. The request body specifies the Tree Id of the new CET tree created in Step (1-4).
+  
+  This request in the collection persists the Person Id as person1Id in the global variables. This person ID will be used as the starting person in Step (3-1).
+  
+  If the status code from this request is 201 Created, proceed to (2-2) Add Person.
+}

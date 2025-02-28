@@ -1,0 +1,56 @@
+meta {
+  name: (6-2) Add SourceRef to Person
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{domain}}/tree/persons/{{person2Id}}
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/x-fs-v1+json
+  Accept: application/x-fs-v1+json
+  X-Reason: Demo SourceReference
+}
+
+body:json {
+  {
+    "persons": [
+      {
+        "id": "{{person2Id}}",
+        "sources": [
+          {
+            "description": "https://beta.familysearch.org/platform/sources/descriptions/{{sourceDescription1Id}}"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+script:post-response {
+  let source1Id = res.headers["x-entity-id"];
+  
+  // If the header exists, store it as an environment variable
+  if (source1Id) {
+      bru.setEnvVar("source1Id", source1Id);
+  }
+  
+}
+
+tests {
+  // postman.setGlobalVariable("source1Id", res.getHeader("X-Entity-Id"));
+}
+
+docs {
+  The /tree/persons/{personId} endpoint updates the Person identified by the id in {personId}. The Request Body adds a URI reference to the Source Definition created in Step (6-1) to the Person record created in Step (2-2). That person is identified by the id stored in the global variable person2Id.
+  
+  The id of the new source is persisted in this collection in the global variable source1Id.
+  
+  If the status code from this request is 201 Created, person2Id now has a source defined for it.
+  
+  If the status code from this request is 201 Created, proceed to (7-1) Search for person in CET tree.
+}

@@ -1,0 +1,119 @@
+meta {
+  name: (8-2) Get Match By Example
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{domain}}/tree/matches?count=10
+  body: json
+  auth: inherit
+}
+
+params:query {
+  count: 10
+}
+
+headers {
+  ~Accept: application/x-gedcomx-atom+json
+}
+
+body:json {
+  {
+    "description" : "#sd1",
+    "persons" : [
+             {
+              "id": "primaryPerson",
+              "evidence": [
+                  {
+                      "id": "189244336-58008374",
+                      "resource": "https://beta.familysearch.org/platform/memories/memories/189244336/personas/189244336-58008374",
+                      "resourceId": "189244336-58008374"
+                  }
+              ],
+              "living": false,
+              "gender": {
+                  "id": "94104eac-8025-40c0-b000-938692fdcfe8",
+                  "attribution": {
+                      "contributor": {
+                          "resource": "https://beta.familysearch.org/platform/users/agents/MMXS-PFN",
+                          "resourceId": "MMXS-PFN"
+                      },
+                      "modified": 1727900738263
+                  },
+                  "type": "http://gedcomx.org/Male"
+              },
+              "links": {
+                  "person": {
+                      "href": "https://beta.familysearch.org/platform/tree/persons/BMPJ-RSC?flag=fsh"
+                  }
+              },
+              "identifiers": {
+                  "http://gedcomx.org/Persistent": [
+                      "https://beta.familysearch.org/ark:/61903/4:1:BMPJ-RSC"
+                  ]
+              },
+              "names": [
+                  {
+                      "id": "a63f139e-edde-4290-9695-34c17336ae54",
+                      "attribution": {
+                          "contributor": {
+                              "resource": "https://beta.familysearch.org/platform/users/agents/MMXS-PFN",
+                              "resourceId": "MMXS-PFN"
+                          },
+                          "modified": 1727900738263
+                      },
+                      "type": "http://gedcomx.org/BirthName",
+                      "preferred": true,
+                      "nameForms": [
+                          {
+                              "lang": "en",
+                              "fullText": "Odis Smith",
+                              "parts": [
+                                  {
+                                      "type": "http://gedcomx.org/Given",
+                                      "value": "Odis"
+                                  },
+                                  {
+                                      "type": "http://gedcomx.org/Surname",
+                                      "value": "Smith"
+                                  }
+                              ],
+                              "nameFormInfo": [
+                                  {
+                                      "order": "http://familysearch.org/v1/Eurotypic"
+                                  }
+                              ]
+                          }
+                      ]
+                  }
+              ],
+              "facts": [
+                  {
+                      "id": "3f6066cb-85bc-49af-8113-9ba8c81ba5bc",
+                      "attribution": {
+                          "contributor": {
+                              "resource": "https://beta.familysearch.org/platform/users/agents/MMXS-PFN",
+                              "resourceId": "MMXS-PFN"
+                          },
+                          "modified": 1727900738263
+                      },
+                      "type": "http://gedcomx.org/Death"
+                  }
+              ]
+          } 
+      ]
+  }
+                  
+   
+}
+
+docs {
+  The /tree/persons/{{personId}}/matches endpoint requests a list of match hints for the person specified by personId. The response may contain match hints from the CET tree or the main Family Tree. See the documentation at [https://www.familysearch.org/developers/docs/api/tree/Match_by_Tree_Person_Id_resource](https://www.familysearch.org/developers/docs/api/tree/Match_by_Tree_Person_Id_resource).
+  
+  Please note that there is some acceptable system latency between when a person is created and their match hints are available via the tree/persons/{personId}/matches endpoint.
+  
+  If the status code from this request is 204 No Content, no results were found. Wait and allow time for a response of 200 OK. See the example request and response documents at [https://www.familysearch.org/developers/docs/api/tree/Read_Matches_by_Tree_Person_Id_usecase](https://www.familysearch.org/developers/docs/api/tree/Read_Matches_by_Tree_Person_Id_usecase).
+  
+  If the status code from this request is 200 OK, proceed to (20) Get Tree Person IDs.
+}

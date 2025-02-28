@@ -1,0 +1,21 @@
+meta {
+  name: (1-3-1) Read Groups
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{domain}}/groups
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/x-fs-v1+json
+}
+
+docs {
+  The /groups endpoint gets a list of all CET Groups.
+  
+  If the status code from this request is 200 OK, the list of groups will be in the response body. Proceed to (4) Trees.
+}

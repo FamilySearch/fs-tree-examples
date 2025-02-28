@@ -1,0 +1,21 @@
+meta {
+  name: (A-1) Get tree change history
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{domain}}/trees/{{treeId}}/changes
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  If there is more than one page of results available, the response document will contain a "next" field in the "links" section. This "next" field will have an "href" field, the value of which is the url to the next page. Use the value of href to request the next page of results.
+  
+  If the status code from this request is 200 OK, proceed to (17) Get tree change history.
+}
