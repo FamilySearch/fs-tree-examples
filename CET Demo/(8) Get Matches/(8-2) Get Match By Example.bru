@@ -5,13 +5,15 @@ meta {
 }
 
 post {
-  url: {{domain}}/tree/matches?count=10
+  url: {{domain}}/tree/matches?count=10&collection=cet&treeId={{treeId}}
   body: json
   auth: inherit
 }
 
 params:query {
   count: 10
+  collection: cet
+  treeId: {{treeId}}
 }
 
 headers {
@@ -24,81 +26,66 @@ body:json {
     "persons" : [
              {
               "id": "primaryPerson",
-              "evidence": [
-                  {
-                      "id": "189244336-58008374",
-                      "resource": "https://beta.familysearch.org/platform/memories/memories/189244336/personas/189244336-58008374",
-                      "resourceId": "189244336-58008374"
-                  }
-              ],
               "living": false,
               "gender": {
-                  "id": "94104eac-8025-40c0-b000-938692fdcfe8",
-                  "attribution": {
-                      "contributor": {
-                          "resource": "https://beta.familysearch.org/platform/users/agents/MMXS-PFN",
-                          "resourceId": "MMXS-PFN"
-                      },
-                      "modified": 1727900738263
-                  },
                   "type": "http://gedcomx.org/Male"
               },
               "links": {
                   "person": {
-                      "href": "https://beta.familysearch.org/platform/tree/persons/BMPJ-RSC?flag=fsh"
+                    "href": "https://apibeta.familysearch.org/platform/tree/persons/B9FD-56P?flag=fsh"
                   }
               },
               "identifiers": {
                   "http://gedcomx.org/Persistent": [
-                      "https://beta.familysearch.org/ark:/61903/4:1:BMPJ-RSC"
-                  ]
+                    "https://familysearch.org/ark:/61903/4:1:B9FD-56P"
+                 ]
               },
               "names": [
                   {
-                      "id": "a63f139e-edde-4290-9695-34c17336ae54",
-                      "attribution": {
-                          "contributor": {
-                              "resource": "https://beta.familysearch.org/platform/users/agents/MMXS-PFN",
-                              "resourceId": "MMXS-PFN"
-                          },
-                          "modified": 1727900738263
-                      },
-                      "type": "http://gedcomx.org/BirthName",
-                      "preferred": true,
-                      "nameForms": [
+                    "type": "http://gedcomx.org/BirthName",
+                    "preferred": true,
+                    "nameForms": [
+                      {
+                        "lang": "en",
+                        "fullText": "William Heaton",
+                        "parts": [
                           {
-                              "lang": "en",
-                              "fullText": "Odis Smith",
-                              "parts": [
-                                  {
-                                      "type": "http://gedcomx.org/Given",
-                                      "value": "Odis"
-                                  },
-                                  {
-                                      "type": "http://gedcomx.org/Surname",
-                                      "value": "Smith"
-                                  }
-                              ],
-                              "nameFormInfo": [
-                                  {
-                                      "order": "http://familysearch.org/v1/Eurotypic"
-                                  }
-                              ]
+                            "type": "http://gedcomx.org/Given",
+                            "value": "William"
+                          },
+                          {
+                            "type": "http://gedcomx.org/Surname",
+                            "value": "Heaton"
                           }
-                      ]
+                        ]
+                      }
+                    ]
                   }
               ],
               "facts": [
                   {
-                      "id": "3f6066cb-85bc-49af-8113-9ba8c81ba5bc",
-                      "attribution": {
-                          "contributor": {
-                              "resource": "https://beta.familysearch.org/platform/users/agents/MMXS-PFN",
-                              "resourceId": "MMXS-PFN"
-                          },
-                          "modified": 1727900738263
-                      },
-                      "type": "http://gedcomx.org/Death"
+                    "type": "http://gedcomx.org/Death",
+                    "date": {
+                      "original": "22 September 1877",
+                      "formal": "+1877-09-22",
+                      "normalized": [
+                        {
+                          "lang": "en-US",
+                          "value": "22 September 1877"
+                        }
+                      ]
+                    },
+                    "place": {
+                      "id": "5352266",
+                      "original": "Orderville, Kane, Utah, United States",
+                      "description": "#5352266",
+                      "normalized": [
+                        {
+                          "lang": "en-US",
+                          "value": "Orderville, Kane, Utah, United States"
+                        }
+                      ]
+                    }
                   }
               ]
           } 
