@@ -1,9 +1,9 @@
 # fs-tree-examples
 This repo contains a Bruno Collection to demonstrate using certain tree-related endpoint in fs-platform-api
 
-**Controlled Edit Trees Bruno Collection**
+**User Trees Bruno Collection**
 
-This is a Bruno Collection covering creating and interacting with a FamilySearch Controlled Edit Tree. See [FamilySearch Developer Portal](https://www.familysearch.org/innovate/developer-portal) for more details.
+This is a Bruno Collection covering creating and interacting with a FamilySearch User Tree. See [FamilySearch Developer Portal](https://www.familysearch.org/innovate/developer-portal) for more details.
 
 **Prerequisites**
 
@@ -31,7 +31,7 @@ Obtain and set an access token
         
     - On the Congratulations! page, click the blue clipboard button to copy the access token to the clipboard.
         
-- In the left side of Bruno, click the Controlled Edit Trees folder and then select the Auth tab.
+- In the left side of Bruno, click the User Trees Demo folder and then select the Auth tab.
     
     - Select Bearer Token.
         
