@@ -9,8 +9,8 @@ auth {
 auth:oauth2 {
   grant_type: authorization_code
   callback_url: https://localhost:8999/
-  authorization_url: https://identbeta.familysearch.org/service/ident/cis/cis-web/oauth2/v3/authorization
-  access_token_url: https://identbeta.familysearch.org/service/ident/cis/cis-web/oauth2/v3/token
+  authorization_url: https://{{authSubdomain}}.familysearch.org/service/ident/cis/cis-web/oauth2/v3/authorization
+  access_token_url: https://{{authSubdomain}}.familysearch.org/service/ident/cis/cis-web/oauth2/v3/token
   refresh_token_url: 
   client_id: 
   client_secret: 
@@ -18,7 +18,7 @@ auth:oauth2 {
   state: 
   pkce: true
   credentials_placement: body
-  credentials_id: credentials
+  credentials_id: familysearch
   token_placement: header
   token_header_prefix: Bearer
   auto_fetch_token: true
