@@ -17,82 +17,53 @@ params:query {
 }
 
 headers {
+  Content-Type: application/x-gedcomx-v1+json
   ~Accept: application/x-gedcomx-atom+json
 }
 
 body:json {
   {
-    "description" : "#sd1",
-    "persons" : [
-             {
-              "id": "primaryPerson",
-              "living": false,
-              "gender": {
-                  "type": "http://gedcomx.org/Male"
-              },
-              "links": {
-                  "person": {
-                    "href": "https://apibeta.familysearch.org/platform/tree/persons/B9FD-56P?flag=fsh"
-                  }
-              },
-              "identifiers": {
-                  "http://gedcomx.org/Persistent": [
-                    "https://familysearch.org/ark:/61903/4:1:B9FD-56P"
-                 ]
-              },
-              "names": [
+    "description": "#sd1",
+    "sourceDescriptions": [
+      {
+        "id": "sd1",
+        "resourceType": "http://gedcomx.org/Record",
+        "about": "#primaryPerson"
+      }
+    ],
+    "persons": [
+      {
+        "id": "primaryPerson",
+        "extracted": true,
+        "living": false,
+        "gender": {
+          "type": "http://gedcomx.org/Male"
+        },
+        "names": [
+          {
+            "type": "http://gedcomx.org/BirthName",
+            "preferred": true,
+            "nameForms": [
+              {
+                "lang": "en",
+                "fullText": "William Heaton",
+                "parts": [
                   {
-                    "type": "http://gedcomx.org/BirthName",
-                    "preferred": true,
-                    "nameForms": [
-                      {
-                        "lang": "en",
-                        "fullText": "William Heaton",
-                        "parts": [
-                          {
-                            "type": "http://gedcomx.org/Given",
-                            "value": "William"
-                          },
-                          {
-                            "type": "http://gedcomx.org/Surname",
-                            "value": "Heaton"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-              ],
-              "facts": [
+                    "type": "http://gedcomx.org/Given",
+                    "value": "William"
+                  },
                   {
-                    "type": "http://gedcomx.org/Death",
-                    "date": {
-                      "original": "22 September 1877",
-                      "formal": "+1877-09-22",
-                      "normalized": [
-                        {
-                          "lang": "en-US",
-                          "value": "22 September 1877"
-                        }
-                      ]
-                    },
-                    "place": {
-                      "id": "5352266",
-                      "original": "Orderville, Kane, Utah, United States",
-                      "description": "#5352266",
-                      "normalized": [
-                        {
-                          "lang": "en-US",
-                          "value": "Orderville, Kane, Utah, United States"
-                        }
-                      ]
-                    }
+                    "type": "http://gedcomx.org/Surname",
+                    "value": "Heaton"
                   }
-              ]
-          } 
-      ]
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
-                  
-   
 }
 
 docs {
