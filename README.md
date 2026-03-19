@@ -15,28 +15,26 @@ This is a Bruno Collection covering creating and interacting with a FamilySearch
 
 To get started
 
-- Clone the git respository holding the collection from the FamilySearch API Workspace from within the FamilySearch API Workspace.
+- Import the GitHub Repository collection into Bruno
+  On the left side of Bruno, click the 3 dots to the right of the Bruno icon and select Import Collection.
 
-- Import the collection into Bruno 
-On the left side of Bruno, click the 3 dots to the right of the Bruno icon and select Import Collection.  Browse to the cloned collection.
+Select Git Repository and paste: https://github.com/FamilySearch/fs-tree-examples into the Repository URL, and click Clone.
+
+You will then select where on your machine you would like to save the local repository, and click Clone.
+
+Select the collection to open, and click Open
 
 - Import the Environment
-In the upper right corner of Bruno, drop down the environment list, and click Configure.  In the bottom left corner of the Configuration dialog, click Import and browse to the environments folder in the cloned collection.
+  In the upper right corner of Bruno, drop down the environment list, and click Configure.  In the bottom left corner of the Configuration dialog, click Import and browse to the environments folder in the cloned collection.
 
-Obtain and set an access token
+Obtain and set an Client ID
 
-- Go to [https://beta.familysearch.org/platform](https://beta.familysearch.org/platform)
-    
-    - Press the **Authenticate** button on the Greetings! page. This will lead you through the FamilySearch authentication process.
-        
-    - On the Congratulations! page, click the blue clipboard button to copy the access token to the clipboard.
-        
-- In the left side of Bruno, click the User Trees Demo folder and then select the Auth tab.
-    
-    - Select Bearer Token.
-        
-    - Edit the access_token field in the variables section by pasting the token you copied from FamilySearch into the Current Value field.
-        
+- Make sure you have obtained an API key (https://developers.familysearch.org/)
+
+  - With the collection selected, click on the Auth tab.
+
+  - Paste your API key into the Client ID field
+
 
 You are now configured to be able to execute requests in the collection.
 
